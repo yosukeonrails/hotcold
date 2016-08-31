@@ -35,11 +35,11 @@ var guessArray=[]
 
 		var guess_closeness= Math.abs(hot_number - guess_number)
 
-		console.log(guess_closeness)
+		
 
 		var same_number= guessArray.indexOf(guess_number)
 
-		console.log('number is ' +same_number)
+		
 
 
 		if (isNaN(guess_number)==true){alert('Only Numbers! ')
@@ -65,8 +65,7 @@ var guessArray=[]
 
 		guessArray.push(guess_number)
 
-		console.log(guessArray)
-
+		
 		how_hot();
 
 		return
