@@ -3,109 +3,124 @@ $(document).ready(function(){
 
 //------generate math random number---//
 
- 
+
 
 //---take input and make it it = to guess_number.//
 
 
-   
-
-    var hot_number= Math.floor((Math.random() * 100) + 1);
-
-    console.log(hot_number)
-
-   var guess_closeness=null
-
-   guess_number=null
-
-     var guesses_count=1
-
-     var guessArray=[]
 
 
-$('.button').click(function(){
+var hot_number= Math.floor((Math.random() * 100) + 1);
 
-	event.preventDefault();
+var guess_closeness=null
 
+guess_number=null
 
-	var guess_number= parseInt( $('.text').val() ) 
+var guesses_count=1
 
-   var guess_closeness= Math.abs(hot_number - guess_number)
+var guessArray=[]
 
-   console.log(guess_closeness)
+	$('.new').click(function(){
+		event.preventDefault();
 
- 	$('p #count').text(guesses_count)
-    
-     
+		location.reload();	
+	})
 
+	$('.button').click(function(){
 
-     	if (isNaN(guess_number)==true){alert('Only Numbers! ')
-
-     		return}
-
-     		else if 
-     			(guess_number>100){
-
-     	               alert('numbers are 1 to 100!');
-     	               return}
-
-     	else {
-
-			guesses_count+=1
-
-			$('#guessList').append('<li>'+ guess_number +'</li>') ;
-
-			guessArray.push(guess_number)
-
-			console.log(guessArray)
-
-       }
+		event.preventDefault();
 
 
-     	
+		var guess_number= parseInt( $('.text').val() ) 
 
-     	// if(guess_number = $.inArray(guess_number, guessArray)) {
-     	// 	alert('number used already!')
-     	// }
+		var guess_closeness= Math.abs(hot_number - guess_number)
 
-     	
-     		if (guesses_count > 15){
-     	alert('Im Sorry you tried too many times! Let\'s start over')
-     	location.reload();}
+		console.log(guess_closeness)
 
+		var same_number= guessArray.indexOf(guess_number)
+
+		console.log('number is ' +same_number)
 
 
-     
+		if (isNaN(guess_number)==true){alert('Only Numbers! ')
+
+		return}
+
+		else if (same_number>1) { alert('Already guessed that number!') }
+
+		else if 
+
+		(guess_number>100){
+
+		   alert('numbers are 1 to 100!');
+		   return}
+
+		else {
+
+		guesses_count+=1
+
+		$('p #count').text(guesses_count)
+
+		$('#guessList').append('<li>'+ guess_number +'</li>') ;
+
+		guessArray.push(guess_number)
+
+		console.log(guessArray)
+
+		how_hot();
+
+		return
+
+		}
+
+		// if(guess_number = $.inArray(guess_number, guessArray)) {
+		// 	alert('number used already!')
+		// }
+
+
+		if (guesses_count > 30){
+		alert('Im Sorry you tried too many times! Let\'s start over')
+		location.reload();}
 
 
 
-	if(guess_closeness == 0 ){ $('h1').text('Congratulations!!!Number was guessed!').css("color","red") }
+		function how_hot(){
+
+
+		if(guess_closeness == 0 ){ $('h1').text('HEEEY Congratulations!!!Number was guessed! Start a new game!!').css("color","red");}
 
 		else if (guess_closeness >= 70 ){$('h1').text('Freezing....').css("color","#ccffff")}
 
-			else if (guess_closeness >= 60 ){$('h1').text('Very Cold..').css("color","#80ffff")}
+		else if (guess_closeness >= 60 ){$('h1').text('Very Cold..').css("color","#80ffff")}
 
-				else if (guess_closeness >=50 ){$('h1').text('Cold...').css("color","#00cccc")}
+		else if (guess_closeness >=50 ){$('h1').text('Cold...').css("color","#00cccc")}
 
-					else if (guess_closeness >= 35 ){$('h1').text('Warm').css("color","#ffff66")}
+		else if (guess_closeness >= 35 ){$('h1').text('Warm').css("color","#ffff66")}
 
-						else if (guess_closeness >= 25 ){$('h1').text('Little bit hot').css("color","#ff9966")}
+		else if (guess_closeness >= 25 ){$('h1').text('Little bit hot').css("color","#ff9966")}
 
-							else if (guess_closeness >= 15 ){$('h1').text('Its hot').css("color","#ff5500")}
+		else if (guess_closeness >= 15 ){$('h1').text('Its hot').css("color","#ff5500")}
 
-								else if (guess_closeness >= 10 ){$('h1').text('Very hot!').css("color","#cc2900")}
+		else if (guess_closeness >= 10 ){$('h1').text('Very hot!').css("color","#cc2900")}
 
-									else if (guess_closeness >=5 ){$('h1').text('Its very very hot!').css("color","#ff3333")}
+		else if (guess_closeness >=5 ){$('h1').text('Its very very hot!').css("color","#ff3333")}
 
-										else if (guess_closeness <=4 ){$('h1').text('Hot hot hot hot hot!!!!').css("color","#ff0000")}
+		else if (guess_closeness <=4 ){$('h1').text('Hot hot hot hot hot!!!!').css("color","#ff0000")}
 
-     
+
+
+		}
+
+
+
+
 })
 
 
-       
-    
-   
+
+
+
+
 
 
 
@@ -122,17 +137,17 @@ $('.button').click(function(){
 
 
 
-	
-	/*--- Display information modal box ---*/
-  	$(".what").click(function(){
-    	$(".overlay").fadeIn(1000);
 
-  	});
+/*--- Display information modal box ---*/
+$(".what").click(function(){
+$(".overlay").fadeIn(1000);
 
-  	/*--- Hide information modal box ---*/
-  	$("a.close").click(function(){
-  		$(".overlay").fadeOut(1000);
-  	});
+});
+
+/*--- Hide information modal box ---*/
+$("a.close").click(function(){
+$(".overlay").fadeOut(1000);
+});
 
 });
 
